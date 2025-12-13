@@ -23,12 +23,14 @@ Built with **Java Swing** (desktop UI), **JDBC / MySQL** (database), DAO pattern
 * Java Swing, AWT
 * JDatePicker (date selection)
 * FlatLaf (modern look & feel)
+* JSP, HTML, CSS
 
 **Backend**
 
 * MySQL (database)
 * JDBC (plain JDBC for DB access)
 * DAO pattern (AppointmentDAO, UserDAO, etc.)
+* Java Servlets
 
 **Libraries / Tools**
 
@@ -37,6 +39,8 @@ Built with **Java Swing** (desktop UI), **JDBC / MySQL** (database), DAO pattern
 * jdatepicker (`jdatepicker-1.3.4.jar`)
 * FlatLaf (`flatlaf-3.4.jar`)
 * IDE: NetBeans (project file included). Git & GitHub for version control.
+* Server: Apache Tomcat 9
+
 
 ## 🤔 Features
 
@@ -50,3 +54,132 @@ Built with **Java Swing** (desktop UI), **JDBC / MySQL** (database), DAO pattern
 *  Secure password hashing using bcrypt
 *  JDBC prepared statements (prevents SQL injection)
 *  DAO layer and model classes for clean separation
+*  
+---
+
+## 🚀 Servlets Used
+
+### 🔹 LoginServlet
+**Purpose:**  
+- Authenticates users using database validation  
+- Creates session on successful login  
+
+**Key Concepts:**  
+- `HttpServlet`
+- `doPost()`
+- `HttpSession`
+- JDBC (`PreparedStatement`)
+
+---
+
+### 🔹 LogoutServlet
+**Purpose:**  
+- Logs out user securely  
+
+**Functionality:**  
+- Invalidates session  
+- Redirects to login page  
+
+---
+
+### 🔹 DoctorServlet
+**Purpose:**  
+- Handles doctor management  
+
+**Functionality:**  
+- Accepts doctor details from JSP  
+- Inserts data into MySQL  
+- Forwards success message  
+
+---
+
+### 🔹 PatientServlet
+**Purpose:**  
+- Handles patient registration  
+
+**Functionality:**  
+- Receives patient data  
+- Stores it in database  
+- Displays confirmation  
+
+---
+
+## 🧾 JSP Pages Used
+
+### 🔹 login.jsp
+- User login interface  
+- Sends data to `LoginServlet`  
+- Displays error messages  
+
+---
+
+### 🔹 index.jsp (Dashboard)
+- Main landing page after login  
+- Displays navigation menu  
+- Session-protected  
+
+---
+
+### 🔹 addDoctor.jsp / viewDoctor.jsp
+- Add doctor details  
+- View doctor list in tabular form  
+
+---
+
+### 🔹 addPatient.jsp / viewPatient.jsp
+- Register patient  
+- View patient records  
+
+---
+
+### 🔹 success.jsp
+- Displays confirmation messages after operations  
+
+---
+
+## 🔐 Session Management
+
+- Session created after successful login
+- Session attribute: `username`
+- Protected pages check session validity
+- Logout destroys session using `session.invalidate()`
+
+---
+
+## 🗄️ Database Tables
+
+- `user` – login credentials
+- `doctor` – doctor details
+- `patient` – patient details
+- `appointments` – appointment records
+
+---
+
+## 🎨 UI Enhancement
+
+- External CSS used (`style.css`)
+- Card-based layout
+- Gradient buttons
+- Hover effects
+- Professional healthcare theme
+
+---
+
+## ✅ Code Quality & Execution
+
+- Clean package structure
+- No SQL inside JSP
+- Centralized DB connection
+- Proper exception handling
+- Modular servlets
+
+---
+
+## 🌟 Innovation / Extra Effort
+
+- Session-based security
+- UI enhancement using CSS
+- MVC-ready structure
+- Scalable design
+
+-
